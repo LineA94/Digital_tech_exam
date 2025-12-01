@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lines exam website</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="stylesheet" href="style.css">
   <!--This is a font that I found on Google Fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Felipa&display=swap" rel="stylesheet">
 </head>
 <body>
-
+  <button onclick="loadMarkdown('test-markdown.md', 'markdown-container-test')">Load markdown</button>
+  <div id="markdown-container-test"></div>
+  <div id="daily-quote"></div>
   <h1 class="felipa-regular">My current field of study: Philosophy and its contemporary influence</h1>
   <div class="textbox">
   <p class="quote1">"<i>[...] THE world is my idea - This is a truth which holds good for everything that lives and knows, though man alone can bring it into reflective consciousness. If he really does this, he has attained philosophical wisdom"</i> <br>
@@ -91,4 +94,21 @@ Storozhyk, M.(2024). Philosophy of future: analytical overview of interaction be
   >Click to read how I created this website</button></a>
   </div>
 </body>
+
+<script>
+  async function loadMarkdown(filename, componentId) {
+    console.log("Is Running....");
+    const response = await fetch(filename);
+    const text = await response.text();
+    document.getElementById(componentId).innerHTML = marked.parse(text);
+  }
+  loadMarkdown('test-markdown.md', 'markdown-container-test');
+
+  async function getAdvice(){
+    const response = await fetch('https://api.adviceslip.com/advice');
+    const data = await response.json();
+    document.getElementById("daily-quote").innerHTML = data.slip.advice;
+  }
+  getAdvice();
+</script>
 </html>

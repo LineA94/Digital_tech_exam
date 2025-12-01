@@ -32,12 +32,6 @@ Bibliography</p>
 <p>The abbrivation <b>API</b> stands for "<b>Application Programming Interface</b>" (<i>What is an API?</i>, 2025). APIs are sets of automated protocols that are able to allow "[...] different software components to communicate and transfer data" (<i>What is an API?</i>, 2025). This can be a very effective feature on a website, since it allows through small chunks of code for different pieces of software to work together in order to for example enhance user experience and business efficiency, but also for things such as enhancing online security on an app or a website. APIs have been around for centuries, and we interact with them everyday on websites on the internet; they are used on sales platforms, social media platforms, on cloud services, on mobile applications and also on devices which are able to connect to objects, such as for example cameras and microphones (<i>What is an API?</i>, 2025). The way they work is by data sharing through request and respond cycles - when a user interacts with an API client by for example pressing a button or searching a sepcific term on a website, a request is sent to obtain the specific piece of data. Then the API server retrieves the needed data from its ressource and this data is then returned to the user back on the website that was originally interacted with (<i>What is an API?</i>, 2025). <br>
 I have implemented an API on this website by inserting a small "chunk of code" as described above, which you can try here in order to see how they work in practice: </p>
 
-<script>async function getAdvice(){
-  const response = await fetch('https://api.adviceslip.com/advice');
-  const data = await response.json();
-  document.getElementById("daily-quote").innerHTML = data.slip.advice;
-}
-</script>
 <button class="button2" onclick="getAdvice()">
     Click this button to get (not so philosophical) life advice from an API
 </button>
@@ -71,4 +65,11 @@ HTML Tutorial. (2005). Retrieved November 28, 2025, from https://www.w3schools.c
 </div>
 
 </body>
+
+<script>async function getAdvice(){
+  const response = await fetch('https://api.adviceslip.com/advice');
+  const data = await response.json();
+  document.getElementById("daily-quote").innerHTML = data.slip.advice;
+}
+</script>
 </html>
